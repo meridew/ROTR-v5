@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpgwfdpogonrf"]
+
+[ext_resource type="Script" path="res://main/game/menus/game_over/game_over.gd" id="1_k2qsc"]
+[ext_resource type="AudioStream" uid="uid://dtu5o5lbpf6t6" path="res://assets/audio/game_over.mp3" id="2_r2eel"]
+
+[sub_resource type="Animation" id="Animation_ki2c4"]
+resource_name = "game_over"
+length = 3.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_r2eel")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftit7"]
+_data = {
+"game_over": SubResource("Animation_ki2c4")
+}
+
+[node name="game_over" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_k2qsc")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 300
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ftit7")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_r2eel")

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://csw0v2glweb1s"]
+
+[node name="drone" type="Node2D"]

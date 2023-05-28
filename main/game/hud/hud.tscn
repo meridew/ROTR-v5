@@ -1,0 +1,188 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1kim0anmnw3l"]
+
+[ext_resource type="Script" path="res://main/game/hud/hud.gd" id="1_qt1at"]
+[ext_resource type="Texture2D" uid="uid://be5cdl1he2tuf" path="res://assets/sprites/player_radar_marker.png" id="2_088rc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18ffi"]
+bg_color = Color(0.435294, 0, 0, 0.584314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6abg"]
+bg_color = Color(0.627451, 0.831373, 1, 0.4)
+
+[sub_resource type="Animation" id="Animation_j2hn6"]
+resource_name = "flash"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HPContainer/HP_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ubl4n"]
+resource_name = "hud_radar_flash"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(3, 3, 3, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Radar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_swpl0"]
+resource_name = "xp_flash"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XPContainer/XP_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4cpsv"]
+_data = {
+"hp_flash": SubResource("Animation_j2hn6"),
+"hud_radar_flash": SubResource("Animation_ubl4n"),
+"xp_flash": SubResource("Animation_swpl0")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_qt1at")
+
+[node name="HPContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+
+[node name="HP_Bar" type="ProgressBar" parent="HPContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/fill = SubResource("StyleBoxFlat_18ffi")
+value = 100.0
+
+[node name="XPContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="XP_Bar" type="ProgressBar" parent="XPContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+theme_override_styles/fill = SubResource("StyleBoxFlat_l6abg")
+show_percentage = false
+
+[node name="Level" type="Label" parent="XPContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Level 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4cpsv")
+}
+
+[node name="Radar" type="Control" parent="."]
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1408.0
+offset_top = 756.0
+offset_right = 1888.0
+offset_bottom = 1026.0
+pivot_offset = Vector2(240, 135)
+
+[node name="RadarBackground" type="ColorRect" parent="Radar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0.239216, 0.239216, 0.368627)
+
+[node name="PlayerMarker" type="Sprite2D" parent="Radar/RadarBackground"]
+position = Vector2(240, 135)
+scale = Vector2(3, 3)
+texture = ExtResource("2_088rc")
+
+[node name="Markers" type="Control" parent="Radar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HudUpdateTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="EquipmentGrid" type="GridContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = 64.0
+offset_right = -35.0
+offset_bottom = -905.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="GameTime" type="Label" parent="."]
+offset_left = 21.0
+offset_top = 48.0
+offset_right = 206.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 40
+text = "00:00"
+
+[connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]

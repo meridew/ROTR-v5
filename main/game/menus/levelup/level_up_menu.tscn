@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://tdn55dr0so74"]
+
+[ext_resource type="Script" path="res://main/game/menus/levelup/level_up_menu.gd" id="1_el0x5"]
+
+[node name="Levelup_Menu" type="CanvasLayer" groups=["levelup_menu"]]
+process_mode = 2
+layer = 2
+script = ExtResource("1_el0x5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "LEVEL UP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SkipButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SKIP"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

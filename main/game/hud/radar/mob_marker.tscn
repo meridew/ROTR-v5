@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba5jqdbbddqv6"]
+
+[ext_resource type="Texture2D" uid="uid://cem23kal5akml" path="res://assets/sprites/mob_radar_marker.png" id="1_ulhfy"]
+[ext_resource type="Script" path="res://main/game/hud/radar/mob_marker.gd" id="2_2h5s2"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ulhfy")
+script = ExtResource("2_2h5s2")

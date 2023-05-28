@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://q6a0t8f8nlq8"]
+
+[ext_resource type="Script" path="res://main/game/menus/levelup/buttons/level_up_button.gd" id="1_6ej8a"]
+[ext_resource type="Theme" uid="uid://c724qjfi0hhpa" path="res://assets/themes/rotr.tres" id="2_dtthu"]
+[ext_resource type="SpriteFrames" uid="uid://bbs2njctcwfld" path="res://assets/spriteframes/icons/equipment_icons.tres" id="3_lcq08"]
+
+[node name="button" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6ej8a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 200
+
+[node name="info_container" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="label_upgrade_type" type="Label" parent="MarginContainer/info_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_dtthu")
+theme_override_font_sizes/font_size = 25
+text = "[weapon]"
+horizontal_alignment = 1
+
+[node name="label_new" type="Label" parent="MarginContainer/info_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "NEW"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="equipment_icon" type="AnimatedSprite2D" parent="MarginContainer/TextureRect"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_lcq08")
+animation = &"electro_magnet"

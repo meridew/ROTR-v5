@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwfd42we1026r"]
+
+[ext_resource type="Script" path="res://equipment/laser.gd" id="1_ejg0p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akkeo"]
+
+[node name="laser" type="Node2D"]
+script = ExtResource("1_ejg0p")
+
+[node name="laser_line" type="Line2D" parent="."]
+y_sort_enabled = true
+width = 2.0
+default_color = Color(1, 0, 0, 0.337255)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_akkeo")

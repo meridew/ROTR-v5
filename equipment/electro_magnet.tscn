@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5dssdf3cuyy"]
+
+[ext_resource type="Script" path="res://equipment/electro_magnet.gd" id="1_h2qcr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_raryc"]
+radius = 150.0
+
+[node name="electro_magnet" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_h2qcr")
+
+[node name="attraction" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_raryc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="." to="." method="_on_area_exited" flags=18]

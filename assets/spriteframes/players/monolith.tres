@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3]
+
+[ext_resource type="Texture2D" uid="uid://hadr0ayxg1g6" path="res://assets/spritesheets/players/monolith.png" id="1_faqwo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_263oq"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hrdy"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrdsn"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul8ce"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7o2g"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqkbr"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xear4"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq1t7"]
+atlas = ExtResource("1_faqwo")
+region = Rect2(224, 0, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_263oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hrdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrdsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul8ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7o2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqkbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xear4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq1t7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

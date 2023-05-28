@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmhqcuqer7bh7"]
+
+[sub_resource type="GDScript" id="GDScript_jbvxs"]
+script/source = "extends \"res://equipment/base_equipment.gd\"
+
+@onready var laser = $Line2D
+@export var damage = 10.0
+@export var laser_bounces = 5 
+
+var mobs = []
+var current_target = null
+var charge_time = 3.0
+var fire_time = 0.1
+var current_charge_time = 0.0
+var current_fire_time = 0.0
+var is_charging = false
+var is_firing = false
+
+func _ready():
+	# This assumes all mobs are children of a Node named \"Mobs\" in the scene
+	laser.hide()
+	mobs = GameStateManager.mob_node
+	start_charging()
+
+func _process(delta):
+	if is_charging:
+		current_charge_time += delta
+		if current_charge_time >= charge_time:
+			is_charging = false;
+			current_charge_time = 0.0;
+			start_firing();
+	elif is_firing:
+		current_fire_time += delta
+		if current_fire_time >= fire_time:
+			is_firing = false;
+			current_fire_time = 0.0;
+
+func get_nearest_mob(position):
+	var nearest_mob = null
+	var nearest_distance = INF
+	for mob in mobs.get_children():
+		var distance = mob.global_position.distance_to(position)
+		if distance < nearest_distance:
+			nearest_mob = mob
+			nearest_distance = distance
+	return nearest_mob
+
+func start_charging():
+	laser.hide()
+	is_charging = true
+	
+func start_firing():
+	laser.show()
+	is_firing = true
+	current_target = get_nearest_mob(global_position)
+	fire_laser();
+	
+func fire_laser():
+	while laser_bounces > 0 and current_target != null:
+		laser_bounces -= 1;
+		# Apply damage to the target
+		current_target.health -= damage;
+		# Assume that you have a method to visually represent the laser
+		draw_laser_to(current_target.global_position);
+		# Set the next target
+		current_target = get_nearest_mob(current_target.global_position);
+	
+func draw_laser_to(target_position):
+	laser.clear_points();
+	laser.add_point(global_position);
+	laser.add_point(target_position);
+	laser.show();
+
+func hide_laser():
+	laser.hide();
+"
+
+[node name="bounce_laser" type="Node2D"]
+y_sort_enabled = true
+script = SubResource("GDScript_jbvxs")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 10
+width = 2.0
+default_color = Color(0.989531, 0.106984, 0.0724056, 1)

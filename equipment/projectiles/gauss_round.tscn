@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxu6ayuo5874i"]
+
+[ext_resource type="Script" path="res://equipment/projectiles/gauss_round.gd" id="1_w67r0"]
+[ext_resource type="Texture2D" uid="uid://4tufmw62nqxf" path="res://assets/sprites/projectile_gauss_round.png" id="2_pv3ja"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vq04n"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rioxc"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 9.91
+particle_flag_align_y = true
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 1.5
+scale_max = 4.0
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_noise_strength = 18.28
+turbulence_noise_speed_random = 9.59
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dcjg"]
+radius = 9.0
+
+[node name="gauss_round" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_w67r0")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vq04n")
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_rioxc")
+trail_lifetime = 10.0
+trail_sections = 128
+trail_section_subdivisions = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3dcjg")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_pv3ja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

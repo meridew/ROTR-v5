@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ypbdi4pabci7"]
+
+[ext_resource type="Script" path="res://main/game/game.gd" id="1_ijk25"]
+[ext_resource type="AudioStream" uid="uid://fsbpgsqvsrv4" path="res://assets/audio/rotr_theme.mp3" id="2_nytbx"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ijk25")
+
+[node name="ItemLayer" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="MobLayer" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ProjectileLayer" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PoiLayer" type="Node2D" parent="."]
+
+[node name="RespawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("2_nytbx")
+volume_db = 10.0
+autoplay = true
+max_distance = 1e+08
+attenuation = 1e-05
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

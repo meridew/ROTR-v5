@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://hrkrxcrtf8lh"]
+
+[ext_resource type="Texture2D" uid="uid://cmc0ksjkccu6f" path="res://assets/spritesheets/players/mob_faye.png" id="1_73h6t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as62w"]
+atlas = ExtResource("1_73h6t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh1ov"]
+atlas = ExtResource("1_73h6t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5niht"]
+atlas = ExtResource("1_73h6t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyqrs"]
+atlas = ExtResource("1_73h6t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fesa3"]
+atlas = ExtResource("1_73h6t")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ned8b"]
+atlas = ExtResource("1_73h6t")
+region = Rect2(320, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as62w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh1ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5niht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyqrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fesa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ned8b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

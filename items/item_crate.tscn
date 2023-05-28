@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bt8xnt32d586w"]
+
+[ext_resource type="Script" path="res://items/item_crate.gd" id="1_gkegr"]
+[ext_resource type="Texture2D" uid="uid://ceqhfexymxghg" path="res://assets/sprites/crate_v1.png" id="1_oti4h"]
+[ext_resource type="Texture2D" uid="uid://wbcblkfw4nwf" path="res://assets/sprites/shadow_generic.png" id="3_k6fdy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rcv7r"]
+radius = 17.0294
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i2bnk"]
+emission_shape = 3
+emission_box_extents = Vector3(15, 15, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -500, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_max = 5.0
+turbulence_enabled = true
+
+[sub_resource type="Animation" id="Animation_d2flp"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DCrate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.2), Color(1, 1, 1, 1), Color(1, 1, 1, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_op5sh"]
+_data = {
+"flash": SubResource("Animation_d2flp")
+}
+
+[node name="item_crate" type="Area2D"]
+process_mode = 3
+position = Vector2(0, -1000)
+scale = Vector2(2, 2)
+script = ExtResource("1_gkegr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_rcv7r")
+
+[node name="Sprite2DCrate" type="Sprite2D" parent="."]
+modulate = Color(1.60484, 1.60484, 1.60484, 1)
+texture = ExtResource("1_oti4h")
+
+[node name="Sprite2DShadow" type="Sprite2D" parent="Sprite2DCrate"]
+modulate = Color(1, 1, 1, 0.639216)
+z_index = -1
+position = Vector2(-0.333333, 7.33335)
+scale = Vector2(0.634115, 0.90625)
+texture = ExtResource("3_k6fdy")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.683874)
+position = Vector2(0.5, -6)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_i2bnk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "flash"
+libraries = {
+"": SubResource("AnimationLibrary_op5sh")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

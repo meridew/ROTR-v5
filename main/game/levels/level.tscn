@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cogdblu7rm8gh"]
+
+[ext_resource type="Texture2D" uid="uid://cmvmdfqs8ttui" path="res://assets/sprites/floor_desert.png" id="1_5ufyc"]
+[ext_resource type="Script" path="res://main/game/levels/level.gd" id="1_5vmbo"]
+
+[node name="Level" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_5vmbo")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_5ufyc")
+centered = false
+
+[node name="AirDropTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="AirDropPoiWaitTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="AirDropTimer" to="." method="_on_air_drop_timer_timeout"]
+[connection signal="timeout" from="AirDropPoiWaitTimer" to="." method="_on_air_drop_poi_wait_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c724qjfi0hhpa"]
+
+[ext_resource type="FontFile" uid="uid://icmxc1hokavj" path="res://assets/fonts/VT323-Regular.ttf" id="1_02e3g"]
+
+[resource]
+default_font = ExtResource("1_02e3g")
