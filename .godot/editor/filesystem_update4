@@ -11,3 +11,7 @@ res://main/game/hud/hud.tscn
 res://main/game/levels/level.tscn
 res://equipment/air_strike.tscn
 res://html_shell.html.txt
+res://equipment/air_strike.gd
+res://main/armoury_class.gd
+res://main/game/game.gd
+res://game_state_manager.gd
