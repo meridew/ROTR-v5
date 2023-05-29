@@ -1,9 +1,9 @@
+Label
 AnimatedSprite2D
 Sprite2D
 AnimationPlayer
 Node2D
 Control
-Label
 GPUParticles2D
 Timer
 TextureRect

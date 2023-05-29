@@ -22,7 +22,7 @@ enum Joystick_mode {
 }
 
 ## If the joystick stays in the same position or appears on the touched position when touch is started
-@export var joystick_mode := Joystick_mode.FIXED
+@export var joystick_mode := Joystick_mode.DYNAMIC
 
 enum Visibility_mode {
 	ALWAYS, ## Always visible

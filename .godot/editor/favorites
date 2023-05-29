@@ -1,3 +1,6 @@
 res://main/game/hud/hud.gd
 res://main/game/game.gd
 res://main/game/player/player.gd
+res://main/game/hud/joystick/virtual_joystick.gd
+res://main/game/hud/hud.tscn
+res://test/test.tscn

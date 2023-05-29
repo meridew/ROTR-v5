@@ -187,9 +187,12 @@ theme_override_font_sizes/font_size = 40
 text = "00:00"
 
 [node name="VirtualJoystick" parent="." instance=ExtResource("3_u4cqn")]
+z_index = 10
 offset_left = 204.0
 offset_top = -216.0
 offset_right = 204.0
 offset_bottom = -216.0
 
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]
+
+[editable path="VirtualJoystick"]

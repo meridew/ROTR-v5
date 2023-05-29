@@ -67,10 +67,10 @@ func get_input():
 			# If the player is not moving, change the animation to "idle"
 			if animated_sprite.animation != "idle":
 				animated_sprite.animation = "idle"
-		
-	#	# Movement using the joystick output:
-		if joystick_left and joystick_left.is_pressed:
-			velocity += joystick_left.get_output() * player_speed
+				
+	if joystick_left.is_pressed:
+		var joystick_output = joystick_left.output
+		velocity = Vector2(joystick_output.x, joystick_output.y) * player_speed
 
 func calculate_player_dps():
 	var dps = 0

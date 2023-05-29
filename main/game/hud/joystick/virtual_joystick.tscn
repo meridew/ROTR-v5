@@ -10,7 +10,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -1080.0
-offset_bottom = -1080.0
+offset_right = 200.0
+offset_bottom = -880.0
 grow_vertical = 0
 script = ExtResource("1_o8hhk")
 
