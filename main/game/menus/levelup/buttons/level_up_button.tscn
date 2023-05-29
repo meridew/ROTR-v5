@@ -50,4 +50,4 @@ size_flags_vertical = 8
 
 [node name="equipment_icon" type="AnimatedSprite2D" parent="MarginContainer/TextureRect"]
 scale = Vector2(3, 3)
-animation = &"electro_magnet"
+animation = &""

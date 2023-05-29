@@ -11,6 +11,9 @@ rough = true
 bounce = 1.0
 absorbent = true
 
+[sub_resource type="Animation" id="Animation_ytjf0"]
+resource_name = "damage"
+
 [sub_resource type="Animation" id="Animation_6biy2"]
 resource_name = "flash"
 length = 0.1
@@ -27,9 +30,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(3, 3, 3, 1), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_ytjf0"]
-resource_name = "damage"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pradc"]
 _data = {

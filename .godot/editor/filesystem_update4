@@ -1,7 +1,6 @@
 res://main/main.tscn
 res://assets/spriteframes/players/player_obelisk.tres
 res://assets/spriteframes/players/player_slugger.tres
-res://assets/spriteframes/icons/equipment_icons.tres
 res://assets/spriteframes/fx/explosion_v1.tres
 res://assets/spriteframes/intro/intro.tres
 res://assets/spriteframes/players/faye.tres
@@ -9,11 +8,6 @@ res://main/game/game.tscn
 res://main/game/hud/joystick/virtual_joystick.tscn
 res://main/game/player/player.tscn
 res://main/game/hud/hud.tscn
-res://pool_manager.gd
 res://mobs/mob.tscn
-res://main/game/player/player_class.gd
-res://main/game/player/player.gd
 res://main/game/menus/levelup/buttons/level_up_button.tscn
-res://equipment/laser.gd
 res://equipment/laser.tscn
-res://main/game/game.gd
