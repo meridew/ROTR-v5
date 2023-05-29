@@ -10,3 +10,4 @@ res://joystick/virtual_joystick.tscn
 res://main/game/player/player.tscn
 res://main/game/player/player.gd
 res://joystick/virtual_joystick.gd
+res://main/game/hud/hud.tscn
