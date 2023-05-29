@@ -21,8 +21,8 @@ signal hud_ready
 
 const RADAR_SCALE = 0.1
 var entity_markers: Dictionary = {}
-var entity_marker_scale = 0.5
-var boss_mob_marker_scale = 1
+var entity_marker_scale = 1
+var boss_mob_marker_scale = 2
 
 func _on_player_ready():
 	hud_update_timer.start()

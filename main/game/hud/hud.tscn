@@ -147,7 +147,7 @@ color = Color(0.239216, 0.239216, 0.239216, 0.368627)
 
 [node name="PlayerMarker" type="Sprite2D" parent="Radar/RadarBackground"]
 position = Vector2(240, 135)
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 texture = ExtResource("2_088rc")
 
 [node name="Markers" type="Control" parent="Radar"]

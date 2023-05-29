@@ -25,3 +25,6 @@ res://equipment/nanite_armour.gd
 res://equipment/spinng_laser.gd
 res://mobs/mob_class.gd
 res://pool_manager.gd
+res://main/game/hud/hud.gd
+res://main/game/player/player.gd
+res://items/item.tscn

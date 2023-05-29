@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var player_max_xp: float = 100
 @export var player_xp: float = 0
 @export var player_speed: float
-@export var player_xp_level_multiplier: float = 1.05
+@export var player_xp_level_multiplier: float = 1.2
 
 @export var equipment: Dictionary
 
@@ -80,7 +80,7 @@ func calculate_player_dps():
 	player_dps = dps
 
 func level_up():
-	player_max_xp = player_xp * player_xp_level_multiplier
+	player_max_xp = player_max_xp * player_xp_level_multiplier
 	player_xp = 0
 	player_level += 1
 	GameStateManager.level_up_menu.show_menu()

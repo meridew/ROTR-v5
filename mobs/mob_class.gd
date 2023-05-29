@@ -20,7 +20,8 @@ func _init(entity_variant: String, base_damage: float, base_hp: float, base_spee
 	mob = mob_scene.instantiate()
 	mob.entity_variant = entity_variant
 	mob.mob_scale = Vector2(base_scale,base_scale)
-	set_random_factors(randomness,base_hp,base_damage,base_value)
+	mob.mob_value = base_value
+	set_random_factors(randomness,base_hp,base_damage)
 	set_physics_scaling(base_mass,base_speed,base_acceleration,base_fps)
 	
 # Apply the scaling factors to the mob's physics-related attributes
@@ -39,11 +40,10 @@ func set_physics_scaling(base_mass: float, base_speed: float, base_acceleration:
 	mob.mob_fps = get_randomised_value(mob.mob_fps)
 
 # Set the random factors for mob damage, hp, and value; these random factors provide variation in mob stats
-func set_random_factors(randomness: float, base_hp: float, base_damage: float, base_value: float):
+func set_random_factors(randomness: float, base_hp: float, base_damage: float):
 	mob.mob_random_factor = get_random_factor(randomness)
 	mob.mob_damage = get_randomised_value(base_damage)
 	mob.mob_hp = get_randomised_value(base_hp)
-	mob.mob_value = get_randomised_value(base_value)
 	
 # Get a random factor within a range determined by the "randomness" parameter
 func get_random_factor(randomness: float) -> float:
