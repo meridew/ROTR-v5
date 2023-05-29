@@ -56,14 +56,11 @@ func _init_game():
 	add_child(armoury)
 	player.get_equipment(player.default_equipment_id,true)
 	player.get_equipment("air_strike",true)
+	player.joystick_left = hud.get_node("JoyStick")
 	
 	GameStateManager.game = self
-	
-	armoury = get_node("Armoury")
-	player = get_node("Player")
-	
+		
 	level = level_scene.instantiate()
-	
 	level_up_menu = level_up_menu_scene.instantiate()
 	game_over = game_over_scene.instantiate()
 	debug_console = debug_console_scene.instantiate()

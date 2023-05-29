@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main/game/hud/hud.gd" id="1_qt1at"]
 [ext_resource type="Texture2D" uid="uid://be5cdl1he2tuf" path="res://assets/sprites/player_radar_marker.png" id="2_088rc"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="3_j82us"]
+[ext_resource type="PackedScene" uid="uid://dkvlvrxo4suxm" path="res://main/game/hud/joystick/virtual_joystick.tscn" id="3_u4cqn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18ffi"]
 bg_color = Color(0.435294, 0, 0, 0.584314)
@@ -186,11 +186,10 @@ offset_bottom = 125.0
 theme_override_font_sizes/font_size = 40
 text = "00:00"
 
-[node name="Virtual Joystick" parent="." instance=ExtResource("3_j82us")]
-modulate = Color(1, 1, 1, 0.431373)
-offset_left = 192.0
-offset_top = -196.0
-offset_right = 192.0
-offset_bottom = -196.0
+[node name="VirtualJoystick" parent="." instance=ExtResource("3_u4cqn")]
+offset_left = 204.0
+offset_top = -216.0
+offset_right = 204.0
+offset_bottom = -216.0
 
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]

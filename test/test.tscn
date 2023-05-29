@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bq2sqb1u1l5ve"]
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="1_4k4lh"]
-[ext_resource type="Texture2D" uid="uid://b4jy3cynf4voa" path="res://icon.svg" id="2_44wa8"]
+[ext_resource type="Texture2D" uid="uid://cy0j03n5nda0g" path="res://icon.svg" id="2_44wa8"]
 [ext_resource type="Script" path="res://test/player.gd" id="3_dsmxw"]
 
 [node name="Test" type="Node2D"]
@@ -16,7 +16,6 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -300.0
 offset_top = -300.0
-offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 joystick_mode = 1

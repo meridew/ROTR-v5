@@ -18,8 +18,8 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_camera = $Camera2D
 @onready var sprite_shadow = $AnimatedSprite2D/Shadow
-@onready var joystick = $VirtualJoystick
 
+@onready var joystick_left
 @onready var bounce_laser
 
 var mobs_in_range = {}
@@ -68,6 +68,10 @@ func get_input():
 			# If the player is not moving, change the animation to "idle"
 			if animated_sprite.animation != "idle":
 				animated_sprite.animation = "idle"
+		
+	#	# Movement using the joystick output:
+		if joystick_left and joystick_left.is_pressed():
+			velocity += joystick_left.get_output() * player_speed
 
 func calculate_player_dps():
 	var dps = 0
