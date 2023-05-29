@@ -56,7 +56,7 @@ func _init_game():
 	add_child(armoury)
 	player.get_equipment(player.default_equipment_id,true)
 	player.get_equipment("air_strike",true)
-	player.joystick_left = hud.get_node("JoyStick")
+	player.joystick_left = hud.get_node("VirtualJoystick")
 	
 	GameStateManager.game = self
 		
