@@ -6,3 +6,7 @@ res://assets/spriteframes/fx/explosion_v1.tres
 res://assets/spriteframes/intro/intro.tres
 res://assets/spriteframes/players/faye.tres
 res://main/game/game.tscn
+res://joystick/virtual_joystick.tscn
+res://main/game/player/player.tscn
+res://main/game/player/player.gd
+res://joystick/virtual_joystick.gd

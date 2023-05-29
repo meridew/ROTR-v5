@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_camera = $Camera2D
 @onready var sprite_shadow = $AnimatedSprite2D/Shadow
+@onready var joystick = $VirtualJoystick
 
 @onready var bounce_laser
 
