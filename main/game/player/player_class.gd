@@ -25,8 +25,8 @@ func new_player(player_id: BasePlayer.PLAYER_ID):
 			player.entity_variant = BasePlayer.PLAYER_ID.slugger
 			player.default_equipment_id = "gauss_canon"
 			player.player_max_hp = 100
-			player.player_speed = 100
-			player.scale = Vector2(2,2)
+			player.player_speed = 140
+			player.scale = Vector2(3,3)
 			player_animated_sprite_shadow.show()
 			player_animated_sprite.sprite_frames = player_slugger_spriteframes
 			
@@ -34,8 +34,8 @@ func new_player(player_id: BasePlayer.PLAYER_ID):
 			player.entity_variant = BasePlayer.PLAYER_ID.obelisk
 			player.default_equipment_id = "laser"
 			player.player_max_hp = 100
-			player.player_speed = 100
-			player.scale = Vector2(1.5,1.5)
+			player.player_speed = 140
+			player.scale = Vector2(2,2)
 			player_animated_sprite_shadow.hide()
 			player_animated_sprite.sprite_frames = player_obelisk_spriteframes
 	

@@ -267,7 +267,6 @@ frame_progress = 0.722363
 offset = Vector2(0, -29)
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
-visible = false
 modulate = Color(1, 1, 1, 0.486275)
 z_index = -1
 position = Vector2(-4.37497, 28.5)

@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var player_hp: float
 @export var player_max_xp: float = 100
 @export var player_xp: float = 0
-@export var player_speed: float = 700
+@export var player_speed: float
 @export var player_xp_level_multiplier: float = 1.05
 
 @export var equipment: Dictionary
@@ -67,10 +67,6 @@ func get_input():
 			# If the player is not moving, change the animation to "idle"
 			if animated_sprite.animation != "idle":
 				animated_sprite.animation = "idle"
-				
-	if joystick_left.is_pressed:
-		var joystick_output = joystick_left.output
-		velocity = Vector2(joystick_output.x, joystick_output.y) * player_speed
 
 func calculate_player_dps():
 	var dps = 0

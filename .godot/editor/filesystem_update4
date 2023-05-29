@@ -11,3 +11,9 @@ res://main/game/player/player.tscn
 res://main/game/hud/hud.tscn
 res://pool_manager.gd
 res://mobs/mob.tscn
+res://main/game/player/player_class.gd
+res://main/game/player/player.gd
+res://main/game/menus/levelup/buttons/level_up_button.tscn
+res://equipment/laser.gd
+res://equipment/laser.tscn
+res://main/game/game.gd
