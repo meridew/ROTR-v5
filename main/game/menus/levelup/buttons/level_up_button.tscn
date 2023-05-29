@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://q6a0t8f8nlq8"]
+[gd_scene load_steps=4 format=3 uid="uid://q6a0t8f8nlq8"]
 
 [ext_resource type="Script" path="res://main/game/menus/levelup/buttons/level_up_button.gd" id="1_6ej8a"]
 [ext_resource type="Theme" uid="uid://c724qjfi0hhpa" path="res://assets/themes/rotr.tres" id="2_dtthu"]
+[ext_resource type="SpriteFrames" uid="uid://bbs2njctcwfld" path="res://assets/spriteframes/icons/equipment_icons.tres" id="3_t5usa"]
 
 [node name="button" type="Button"]
 anchors_preset = 15
@@ -50,4 +51,4 @@ size_flags_vertical = 8
 
 [node name="equipment_icon" type="AnimatedSprite2D" parent="MarginContainer/TextureRect"]
 scale = Vector2(3, 3)
-animation = &""
+sprite_frames = ExtResource("3_t5usa")

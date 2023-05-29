@@ -33,14 +33,14 @@ func create_buttons(quantity: int) -> void:
 		var stat_name: String
 		if(option.type == "stat"):
 			stat_name = format_id_string(option.stat_id)
-			button_text = "UPGRADE" + "\n\n" + str(equipment_name) + "\n" + "INCREASE" + "\n" + str(stat_name) + "\n" + str(option.rate_increase * 100) + "%" + "\n" + str(option.level) + "/" + str(option.max_level)
+			button_text = "UPGRADE" + "\n" + str(equipment_name) + "\n" + "INCREASE" + "\n" + str(stat_name) + "\n" + str(option.rate_increase * 100) + "%" + "\n" + str(option.level) + "/" + str(option.max_level)
 			button_instance.set_meta("select",option)
 			button_instance.get_node("MarginContainer").get_node("info_container").get_node("label_new").hide()
 		elif(option.type == "weapon"):
-			button_text = "WEAPON" + "\n\n" + str(equipment_name)
+			button_text = "WEAPON" + "\n" + str(equipment_name) + "\n" + str(option.equipment_description)
 			button_instance.set_meta("select",option)
 		elif(option.type == "utility"):
-			button_text = "UTILITY" + "\n\n" + str(equipment_name)
+			button_text = "UTILITY" + "\n" + str(equipment_name) + "\n" + str(option.equipment_description)
 			button_instance.set_meta("select",option)
 		button_instance.call_deferred("set_upgrade_type",button_text)
 		button_instance.call_deferred("set_icon",str(option.equipment_id))

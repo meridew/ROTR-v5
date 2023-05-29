@@ -6,6 +6,7 @@ func _init():
 	type = "utility"
 	equipment_id = "electro_magnet"
 	equipment_name = "Electro-Magnet"
+	equipment_description = "attract items"
 	add_stat("attraction_radius", 50, 0.3)
 
 func _ready():

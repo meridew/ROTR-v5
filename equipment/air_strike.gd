@@ -23,6 +23,7 @@ func _init():
 	type = "weapon"
 	equipment_id = "air_strike"
 	equipment_name = "Air Strike"
+	equipment_description = "air strike danger close"
 	add_stat("damage", 200, 0.05)
 	add_stat("radius", 200, 0.05)
 	add_stat("frequency", 5, 0.05)

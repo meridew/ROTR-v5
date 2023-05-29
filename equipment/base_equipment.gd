@@ -9,6 +9,7 @@ extends Node2D
 var dps = 0
 var effectiveness = 0
 var projectile_node
+var equipment_description
 
 func add_stat(stat_id: String, value: float, rate_increase: float, base_increase: float = 0):
 	stats[stat_id] = Stat.new(self, equipment_id, stat_id, value, rate_increase, base_increase)

@@ -1,9 +1,15 @@
-[gd_resource type="SpriteFrames" load_steps=47 format=3 uid="uid://bbs2njctcwfld"]
+[gd_resource type="SpriteFrames" load_steps=51 format=3 uid="uid://bbs2njctcwfld"]
 
 [ext_resource type="Texture2D" uid="uid://bqpwbt4pu0wc6" path="res://assets/spritesheets/equipment_icons/electro_magnet_icon.png" id="1_ag5s6"]
+[ext_resource type="Texture2D" uid="uid://futjt63eso4c" path="res://assets/sprites/icon_none.png" id="1_fjapx"]
 [ext_resource type="Texture2D" uid="uid://btmf2qsmeioeh" path="res://assets/spritesheets/equipment_icons/exposed_reactor_icon.png" id="2_bxcv8"]
 [ext_resource type="Texture2D" uid="uid://cxijauo6y2ybx" path="res://assets/sprites/icon_gauss_canon.png" id="3_khiim"]
 [ext_resource type="Texture2D" uid="uid://s4wufxl8s5cv" path="res://assets/sprites/icon_laser.png" id="4_7alen"]
+[ext_resource type="Texture2D" uid="uid://b8517se2u1b0k" path="res://assets/sprites/jay_gay.png" id="5_y3k2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tquc"]
+atlas = ExtResource("1_fjapx")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7ljd"]
 atlas = ExtResource("1_ag5s6")
@@ -173,8 +179,20 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("4_7alen")
 region = Rect2(0, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjjny"]
+atlas = ExtResource("5_y3k2f")
+region = Rect2(0, 0, 64, 64)
+
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tquc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e7ljd")
@@ -319,5 +337,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"laser",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjjny")
+}],
+"loop": true,
+"name": &"nanite_armour",
 "speed": 5.0
 }]

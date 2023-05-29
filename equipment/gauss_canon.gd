@@ -10,6 +10,7 @@ func _init():
 	type = "weapon"
 	equipment_id = "gauss_canon"
 	equipment_name = "Gauss Canon"
+	equipment_description = "fire projectile"
 	add_stat("damage", 50, 0.5)
 	add_stat("frequency", 1, 0.2)
 	add_stat("projectile_size", 0.5, 0.3)

@@ -6,6 +6,7 @@ func _init():
 	type = "utility"
 	equipment_id = "battery_overcharge"
 	equipment_name = "Battery Overcharge"
+	equipment_description = "go faster"
 	add_stat("speed_increase", 20, 0.2)
 
 func _ready():

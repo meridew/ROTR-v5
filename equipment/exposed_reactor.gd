@@ -13,6 +13,7 @@ func _init():
 	type = "weapon"
 	equipment_id = "exposed_reactor"
 	equipment_name = "Exposed Reactor"
+	equipment_description = "damage radius"
 	add_stat("damage", 10, 0.1)
 	add_stat("frequency", 1,-0.1)
 	add_stat("damage_radius", 40,0.1)

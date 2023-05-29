@@ -7,6 +7,7 @@ func _init():
 	type = "utility"
 	equipment_id = "nanite_armour"
 	equipment_name = "Nanite Armour"
+	equipment_description = "heal over time"
 	add_stat("health_regen_amount", 1, 0.1)
 	add_stat("health_regen_frequency", 1, 0.1)
 	add_stat("health_regen_max", 50, 0.1)

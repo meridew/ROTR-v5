@@ -11,6 +11,7 @@ func _init():
 	type = "weapon"
 	equipment_id = "laser"
 	equipment_name = "Laser"
+	equipment_description = "bouncing laser"
 	add_stat("damage", 50, 0.5)
 	add_stat("frequency", 1, 0.2)
 	add_stat("passthrough", 0, 1, 1)

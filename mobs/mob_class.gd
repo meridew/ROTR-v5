@@ -12,7 +12,7 @@ var mass_scaling_factor = 100.0
 # Lower speed means the mob moves slower
 # Lower acceleration means the mob takes longer to reach top speed
 # Lower fps means the mob's animations update less frequently, making them appear slower
-var speed_scaling_factor = 2.0
+var speed_scaling_factor = 1.0
 var acceleration_scaling_factor = 2.0
 var fps_scaling_factor = 0.8
 

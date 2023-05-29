@@ -10,6 +10,7 @@ func _init():
 	type = "weapon"
 	equipment_id = "spinning_laser"
 	equipment_name = "Spinning Laser"
+	equipment_description = "shitty spinning laser"
 	add_stat("damage", 10, 0.2)
 	add_stat("laser_length", 250, 0.2)
 	add_stat("laser_speed", 180, 0.1)
