@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bfhskpk23oyy"]
+[gd_scene load_steps=38 format=3 uid="uid://bfhskpk23oyy"]
 
 [ext_resource type="Script" path="res://mobs/mob.gd" id="1_jbk20"]
 [ext_resource type="Texture2D" uid="uid://c4syx46p6o6tx" path="res://assets/sprites/player_shadow.png" id="2_bra3a"]
@@ -28,8 +28,12 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(3, 3, 3, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_ytjf0"]
+resource_name = "damage"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pradc"]
 _data = {
+"damage": SubResource("Animation_ytjf0"),
 "flash": SubResource("Animation_6biy2")
 }
 
@@ -256,7 +260,7 @@ libraries = {
 shape = SubResource("CircleShape2D_7uhie")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, 24)
+position = Vector2(-1, 24)
 sprite_frames = SubResource("SpriteFrames_p0033")
 animation = &"caveman"
 frame_progress = 0.722363
@@ -270,5 +274,15 @@ position = Vector2(-4.37497, 28.5)
 scale = Vector2(1.14865, 1)
 texture = ExtResource("2_bra3a")
 offset = Vector2(1, -32)
+
+[node name="Damage" type="Label" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -51.0
+offset_right = 21.0
+offset_bottom = -31.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

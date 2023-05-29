@@ -9,3 +9,5 @@ res://main/game/game.tscn
 res://main/game/hud/joystick/virtual_joystick.tscn
 res://main/game/player/player.tscn
 res://main/game/hud/hud.tscn
+res://pool_manager.gd
+res://mobs/mob.tscn

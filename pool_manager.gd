@@ -6,13 +6,13 @@ const item_scene = preload("res://items/item.tscn")
 var boss_mobs_max = 10
 var boss_mob_pool_active = {}
 var boss_mob_pool_inactive = {}
-var mobs_max = 1000
+var mobs_max = 500
 var mob_pool_active = {}
 var mob_pool_inactive = {}
-var gauss_round_max = 500
+var gauss_round_max = 100
 var gauss_round_pool_active = {}
 var gauss_round_pool_inactive = {}
-var item_max = 1000
+var item_max = 500
 var item_pool_active = {}
 var item_pool_inactive = {}
 
