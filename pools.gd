@@ -70,7 +70,7 @@ func init_mob_pool_inactive():
 func init_boss_mob_pool_inactive():
 	var boss_mob
 	for i in range(boss_mobs_max):
-		boss_mob = BaseMob.new("boss_mob",50,1000,base_speed,5000,base_fps,base_acceleration,1000,4,0.2).mob
+		boss_mob = BaseMob.new("boss_mob",50,1000,base_speed,5000,base_fps,1000000,1000,3,0.2).mob
 		disable(boss_mob)
 		boss_mob.set_target(GameStateManager.player)
 		#boss_mob.global_position = get_random_position()

@@ -75,7 +75,6 @@ func _init_game():
 	GameStateManager.level_up_menu = level_up_menu
 	
 	add_child(level)
-	add_child(hud)
 	add_child(level_up_menu)
 	add_child(game_over)
 	add_child(debug_console)

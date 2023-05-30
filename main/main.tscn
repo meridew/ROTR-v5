@@ -178,6 +178,7 @@ frame_progress = 0.119365
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartButton" to="MainMenu" method="_on_start_button_pressed" flags=18]
 [connection signal="pressed" from="MainMenu/VBoxContainer/SettingsButton" to="MainMenu" method="_on_settings_button_pressed" flags=18]
+[connection signal="pressed" from="MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/QuitButton" to="MainMenu" method="_on_quit_button_pressed" flags=18]
 [connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character1" to="." method="_on_character_1_pressed"]
 [connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character1" to="PlayerSelect" method="_on_character_1_pressed" flags=18]

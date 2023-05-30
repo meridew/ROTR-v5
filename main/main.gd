@@ -49,3 +49,6 @@ func start_game():
 	add_child(game)
 	player_select.hide()
 	music.stop()
+
+func _on_quit_button_pressed():
+	get_tree().quit()

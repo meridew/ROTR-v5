@@ -3,6 +3,9 @@ class_name ConsoleCommands
 var god_mode = false
 var add_equipment_to_hud = true
 
+func set_player_speed(speed):
+	GameStateManager.player.player_speed = speed
+
 func die():
 	GameStateManager.console_toggle(false)
 	GameStateManager.player.player_died()
