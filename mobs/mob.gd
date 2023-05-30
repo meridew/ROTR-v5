@@ -59,8 +59,8 @@ func _on_animation_player_animation_finished(anim_name):
 		die()
 
 func die():
-	PoolManager.acquire_item(self, mob_value)
-	PoolManager.release_mob(self)
+	GameStateManager.pools.acquire_item(self, mob_value)
+	GameStateManager.pools.release_mob(self)
 
 func flip_sprite(direction_to_player):
 	if direction_to_player.x < 0:

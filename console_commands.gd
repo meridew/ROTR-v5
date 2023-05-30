@@ -3,6 +3,10 @@ class_name ConsoleCommands
 var god_mode = false
 var add_equipment_to_hud = true
 
+func die():
+	GameStateManager.console_toggle(false)
+	GameStateManager.player.player_died()
+
 func spawn_boss_mob(amount = "1"):
 	for i in range(amount.to_int()):
 		SpawnManager.enable_mob("boss_mob",true)
@@ -12,10 +16,10 @@ func spawn_mob(amount = "1"):
 		SpawnManager.enable_mob("mob",true)
 	
 func kill_mobs():
-	for mob in PoolManager.mob_pool_active.values():
+	for mob in GameStateManager.pools.mob_pool_active.values():
 		if mob.visible:
 			mob.die()
-	for mob in PoolManager.boss_mob_pool_active.values():
+	for mob in GameStateManager.pools.boss_mob_pool_active.values():
 		if mob.visible:
 			mob.die()
 

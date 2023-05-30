@@ -40,8 +40,9 @@ func set_music_volume(mode):
 		music.volume_db = -100
 
 func start_game():
-	PoolManager.initialize_pools()
-	PoolManager.set_process(true)
+	GameStateManager.pools = Pools.new()
+	GameStateManager.pools.initialize_pools()
+	GameStateManager.pools.set_process(true)
 	SpawnManager.start_spawning()
 
 func _init_game():

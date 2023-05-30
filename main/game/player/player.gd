@@ -135,7 +135,7 @@ func _on_pickup_area_area_entered(item):
 
 func got_xp(item):
 	add_xp(item)
-	PoolManager.release_item(item)
+	GameStateManager.pools.release_item(item)
 
 func _on_player_took_equipment(equipment_id):
 	print("player_took_equipment")

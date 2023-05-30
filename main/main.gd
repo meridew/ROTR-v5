@@ -16,6 +16,7 @@ var game
 
 func _ready():
 	GameStateManager.main = self
+	GameStateManager.main_menu = main_menu
 	main_menu.hide()
 	player_select.hide()
 	game = game_scene.instantiate()

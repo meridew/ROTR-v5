@@ -14,3 +14,6 @@ func show_screen():
 	animation_player.play("game_over")
 	GameStateManager.game.set_music_volume("game_over")
 	GameStateManager.pause()
+
+func _on_button_pressed():
+	GameStateManager.restart()

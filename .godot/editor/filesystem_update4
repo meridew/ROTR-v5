@@ -24,3 +24,10 @@ res://mobs/mob_class.gd
 res://pool_manager.gd
 res://main/game/game.gd
 res://main/game/player/player.gd
+res://main/game/menus/game_over/game_over.gd
+res://main/game/menus/game_over/game_over.tscn
+res://game_state_manager.gd
+res://main/main.gd
+res://spawn_manager.gd
+res://console_commands.gd
+res://pools.gd

@@ -4,11 +4,13 @@ extends Node
 
 var current_scene
 
+var pools: Pools
 var main
 var game
 var player
 var armoury
 var hud
+var main_menu
 var level_up_menu
 var game_over
 var mob_node
@@ -35,3 +37,8 @@ func is_paused() -> bool:
 func console_toggle(value: bool) -> void:
 	console_open = value
 
+func restart():
+	SpawnManager.stop_spawning()
+	var pools: Pools
+	resume()
+	get_tree().reload_current_scene()

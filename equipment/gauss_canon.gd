@@ -31,7 +31,7 @@ func update_stats():
 func fire_projectile():
 	if mobs_in_range.size() > 0:
 		var angle = get_closest_mob()
-		var gauss_round = PoolManager.acquire_projectile()
+		var gauss_round = GameStateManager.pools.acquire_projectile()
 		if gauss_round:
 			gauss_round.init_stats(stats)
 			gauss_round.set_direction(angle)

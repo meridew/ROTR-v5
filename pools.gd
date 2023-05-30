@@ -1,3 +1,4 @@
+class_name Pools
 extends Node
 
 const gauss_round_scene = preload("res://equipment/projectiles/gauss_round.tscn")

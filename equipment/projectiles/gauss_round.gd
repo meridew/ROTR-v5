@@ -31,10 +31,10 @@ func _on_area_entered(area):
 		area.take_damage(damage)
 		projectile_passedthrough += 1
 		if projectile_passedthrough >= projectile_passthrough:
-			PoolManager.release_projectile(self)
+			GameStateManager.pools.release_projectile(self)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	PoolManager.release_projectile(self)
+	GameStateManager.pools.release_projectile(self)
 
 func _on_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -42,7 +42,7 @@ func _on_body_entered(body):
 		body.knockback(projectile_knockback)
 		projectile_passedthrough += 1
 		if projectile_passedthrough > projectile_passthrough:
-			PoolManager.release_projectile(self)
+			GameStateManager.pools.release_projectile(self)
 			
 func set_target(_target):
 	target = target

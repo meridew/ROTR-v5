@@ -78,6 +78,16 @@ func start_spawning():
 	spawn_params_update_timer.start()
 	mob_spawn_timer.start()
 
+func stop_spawning():
+	spawn_params_update_timer.stop()
+	mob_spawn_timer.stop()
+	boss_mob_spawn_timer.stop()
+	respawn_timer.stop()
+	remove_child(spawn_params_update_timer)
+	remove_child(mob_spawn_timer)
+	remove_child(boss_mob_spawn_timer)
+	remove_child(respawn_timer)
+
 func _on_spawn_params_timer_timeout():
 	set_spawn_params()
 	spawn_params_time_period += spawn_params_update_timer.wait_time
@@ -104,13 +114,13 @@ func enable_mob(mob_type: String, force: bool = false):
 	var mobs_max
 	match mob_type:
 		"mob": 
-			pool_active = PoolManager.mob_pool_active
+			pool_active = GameStateManager.pools.mob_pool_active
 			mobs_max = current_spawn_params.mobs_max
 		"boss_mob":
-			pool_active = PoolManager.boss_mob_pool_active
+			pool_active = GameStateManager.pools.boss_mob_pool_active
 			mobs_max = current_spawn_params.boss_mobs_max
 	if force or pool_active.size() < mobs_max:
-		mob = PoolManager.acquire_mob(mob_type)
+		mob = GameStateManager.pools.acquire_mob(mob_type)
 		if mob:
 			var mob_choice = randi() % 3  # gives a random integer 0, 1, or 2
 			if mob_choice == 0:
@@ -119,7 +129,7 @@ func enable_mob(mob_type: String, force: bool = false):
 				mob.change_mob("neanderthal")
 			else:
 				mob.change_mob("caveman")
-			PoolManager.enable(mob)
+			GameStateManager.pools.enable(mob)
 
 func _on_mob_spawn_timer_timeout():
 	enable_mob("mob")
@@ -141,7 +151,7 @@ func get_random_position():
 func respawn_mobs():
 	randomize()
 	var spawn_distance = randf_range(MIN_TARGET_RESPAWN_DISTANCE, MAX_TARGET_RESPAWN_DISTANCE)
-	for mob in PoolManager.mob_pool_active.values():
+	for mob in GameStateManager.pools.mob_pool_active.values():
 		var distance_to_player = mob.global_position.distance_to(GameStateManager.player.global_position)
 		if distance_to_player >= spawn_distance:
 			var player_direction = GameStateManager.player.get_real_velocity().normalized()
