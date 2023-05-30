@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameStateManager="*res://game_state_manager.gd"
 SpawnManager="*res://spawn_manager.gd"
+PoolManager="*res://pool_manager.gd"
 
 [debug]
 

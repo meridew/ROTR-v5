@@ -31,3 +31,5 @@ res://main/main.gd
 res://spawn_manager.gd
 res://console_commands.gd
 res://pools.gd
+res://main/game/hud/joystick/virtual_joystick.gd
+res://main/game/hud/console.tscn

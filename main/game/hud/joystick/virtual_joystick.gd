@@ -78,6 +78,7 @@ func _input(event: InputEvent) -> void:
 					_touch_index = event.index
 					_tip.modulate = pressed_color
 					_update_joystick(event.position)
+					visible = true
 					get_viewport().set_input_as_handled()
 		elif event.index == _touch_index:
 			_reset()
@@ -148,6 +149,7 @@ func _reset():
 	_tip.modulate = _default_color
 	_base.position = _base_default_position
 	_tip.position = _tip_default_position
+	visible = false
 	if use_input_actions:
 		if Input.is_action_pressed(action_left) or Input.is_action_just_pressed(action_left):
 			Input.action_release(action_left)

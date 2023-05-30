@@ -15,6 +15,8 @@ var player_spriteframes
 var game
 
 func _ready():
+	if DisplayServer.is_touchscreen_available():
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	GameStateManager.main = self
 	GameStateManager.main_menu = main_menu
 	main_menu.hide()
