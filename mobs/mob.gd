@@ -26,10 +26,29 @@ func _ready():
 	set_meta("radar_marker",radar_marker)
 	set_mob_scale()
 	set_animation_fps()
-	print("")
 
 func _physics_process(_delta) -> void:
 	move_mob()
+
+func move_mob():
+	if mob_target:
+		# Calculate the direction to the player
+		var direction_to_player = (mob_target.global_position - global_position).normalized()
+		
+		# If the mob is moving slower than its max speed, accelerate towards the player.
+		if linear_velocity.length() < mob_speed:
+			var acceleration_force = direction_to_player * mob_acceleration
+			apply_central_force(acceleration_force)
+		else:
+			# If the mob is moving faster than its max speed, apply a deceleration force.
+			var deceleration_force = -linear_velocity.normalized() * mob_acceleration
+			apply_central_force(deceleration_force)
+		
+		flip_sprite(direction_to_player)
+
+func knockback(amount):
+	var knockback_direction = -linear_velocity.normalized()
+	apply_central_impulse(knockback_direction * amount)
 
 func take_damage(damage_amount):
 	mob_hp -= damage_amount
@@ -42,20 +61,6 @@ func _on_animation_player_animation_finished(anim_name):
 func die():
 	PoolManager.acquire_item(self, mob_value)
 	PoolManager.release_mob(self)
-
-func move_mob():
-	if mob_target:
-		# Calculate the direction to the player
-		var direction_to_player = (mob_target.global_position - global_position).normalized()
-		# Accelerate towards the player
-		var force = direction_to_player * mob_acceleration
-		# Apply the force
-		apply_central_force(force)
-		# Clamp the linear velocity to the max_speed
-		if linear_velocity.length() > mob_speed:
-			linear_velocity = linear_velocity.normalized() * mob_speed
-		
-		flip_sprite(direction_to_player)
 
 func flip_sprite(direction_to_player):
 	if direction_to_player.x < 0:

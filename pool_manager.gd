@@ -54,7 +54,7 @@ func initialize_pools():
 
 var base_fps = 7
 var base_speed = 120
-var base_acceleration = 750
+var base_acceleration = 100000
 
 func init_mob_pool_inactive():
 	var mob

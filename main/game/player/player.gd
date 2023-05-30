@@ -24,6 +24,7 @@ extends CharacterBody2D
 var mobs_in_range = {}
 var player_dps = 0
 var player_effectiveness = 0
+var level_up_counter: int = 0
 
 func _ready():
 	player_hp = player_max_hp
@@ -80,11 +81,12 @@ func calculate_player_dps():
 	player_dps = dps
 
 func level_up():
-	player_max_xp = player_max_xp * player_xp_level_multiplier
-	player_xp = 0
-	player_level += 1
+	while player_xp >= player_max_xp:
+		player_max_xp *= player_xp_level_multiplier
+		player_xp -= player_max_xp
+		player_level += 1
+	GameStateManager.hud.set_level(player_level, player_xp, player_max_xp)
 	GameStateManager.level_up_menu.show_menu()
-	GameStateManager.hud.set_level(player_level,player_xp,player_max_xp)
 	calculate_player_dps()
 
 func add_xp(area):

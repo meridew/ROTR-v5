@@ -50,5 +50,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 
 [node name="equipment_icon" type="AnimatedSprite2D" parent="MarginContainer/TextureRect"]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_t5usa")
+animation = &"laser"
+autoplay = "electro_magnet"
+frame_progress = 0.026049

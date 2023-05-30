@@ -24,6 +24,12 @@ var entity_markers: Dictionary = {}
 var entity_marker_scale = 1
 var boss_mob_marker_scale = 2
 
+func add_equipment(equipment_id: String):
+	var texture_rect = TextureRect.new()
+	texture_rect.name = equipment_id
+	texture_rect.texture = equipment_icons[equipment_id]
+	equipment_grid.add_child(texture_rect)
+
 func _on_player_ready():
 	hud_update_timer.start()
 
@@ -89,12 +95,6 @@ func flash_poi_makers():
 
 func flash_radar():
 	animation_player.play("hud_radar_flash")
-
-func add_equipment(equipment_id: String):
-	var texture_rect = TextureRect.new()
-	texture_rect.name = equipment_id
-	texture_rect.texture = equipment_icons[equipment_id]
-	equipment_grid.add_child(texture_rect)
 
 func replace_equipment(equipment_id: String):
 	var equipment_node = equipment_grid.get_node(equipment_id)

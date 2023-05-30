@@ -6,14 +6,14 @@ var mob: RigidBody2D
 
 # Scaling factor for mob mass; each unit increase in scale quadruples the mob's mass
 # More mass means more force required to accelerate the mob
-var mass_scaling_factor = 100.0
+var mass_scaling_factor = 1
 
 # Scaling factors for mob speed, acceleration, and frames-per-second (fps); each unit increase in scale halves these values
 # Lower speed means the mob moves slower
 # Lower acceleration means the mob takes longer to reach top speed
 # Lower fps means the mob's animations update less frequently, making them appear slower
 var speed_scaling_factor = 1.0
-var acceleration_scaling_factor = 2.0
+var acceleration_scaling_factor = 1.0
 var fps_scaling_factor = 0.8
 
 func _init(entity_variant: String, base_damage: float, base_hp: float, base_speed: float, base_value: float, base_fps: float, base_acceleration: float, base_mass: float, base_scale: int, randomness: float):
@@ -28,13 +28,13 @@ func _init(entity_variant: String, base_damage: float, base_hp: float, base_spee
 # The sqrt function provides a less severe scaling effect than linear scaling
 func set_physics_scaling(base_mass: float, base_speed: float, base_acceleration: float, base_fps: float):
 	# Calculate physics properties based on scaling first
-	mob.mob_mass = base_mass * sqrt(mass_scaling_factor * mob.mob_scale.x)
+	mob.mass = base_mass * sqrt(mass_scaling_factor * mob.mob_scale.x)
 	mob.mob_speed = base_speed / sqrt(speed_scaling_factor * mob.mob_scale.x)
 	mob.mob_acceleration = base_acceleration / sqrt(acceleration_scaling_factor * mob.mob_scale.x)
 	mob.mob_fps = base_fps / sqrt(fps_scaling_factor * mob.mob_scale.x)
 
 	# Now apply randomness to each property
-	mob.mob_mass = get_randomised_value(mob.mob_mass)
+	mob.mass = get_randomised_value(mob.mob_mass)
 	mob.mob_speed = get_randomised_value(mob.mob_speed)
 	mob.mob_acceleration = get_randomised_value(mob.mob_acceleration)
 	mob.mob_fps = get_randomised_value(mob.mob_fps)

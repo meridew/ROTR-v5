@@ -39,6 +39,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_body_entered(body):
 	if body.is_in_group("mobs"):
 		body.take_damage(damage)
+		body.knockback(projectile_knockback)
 		projectile_passedthrough += 1
 		if projectile_passedthrough > projectile_passthrough:
 			PoolManager.release_projectile(self)

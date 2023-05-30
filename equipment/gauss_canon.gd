@@ -16,7 +16,7 @@ func _init():
 	add_stat("projectile_size", 0.5, 0.3)
 	add_stat("projectile_speed", 250, 1)
 	add_stat("projectile_passthrough", 0, 1, 1)
-	add_stat("projectile_knockback", 100, 0.5)
+	add_stat("projectile_knockback", 10000, 0.2)
 
 func _process(delta):
 	elapsed_time += delta
@@ -39,12 +39,10 @@ func fire_projectile():
 			audio_fx.play()
 	
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("mobs"):
-		mobs_in_range.append(area)
+	mobs_in_range.append(area)
 
 func _on_area_2d_area_exited(area):
-	if area.is_in_group("mobs"):
-		mobs_in_range.erase(area)
+	mobs_in_range.erase(area)
 
 func get_closest_mob():
 	var closest_mob = null
