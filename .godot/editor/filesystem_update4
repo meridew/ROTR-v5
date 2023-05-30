@@ -33,3 +33,4 @@ res://console_commands.gd
 res://pools.gd
 res://main/game/hud/joystick/virtual_joystick.gd
 res://main/game/hud/console.tscn
+res://main/game/menus/levelup/level_up_menu.tscn
