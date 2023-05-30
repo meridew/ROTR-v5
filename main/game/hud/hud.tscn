@@ -193,4 +193,13 @@ offset_top = -290.0
 offset_right = 260.0
 offset_bottom = -90.0
 
+[node name="FullScreenButton" type="Button" parent="."]
+offset_left = 1843.0
+offset_top = 694.0
+offset_right = 1887.0
+offset_bottom = 732.0
+theme_override_font_sizes/font_size = 30
+text = "[ ]"
+
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]
+[connection signal="pressed" from="FullScreenButton" to="." method="_on_full_screen_button_pressed"]

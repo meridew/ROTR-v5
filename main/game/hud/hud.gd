@@ -11,6 +11,7 @@ signal hud_ready
 @onready var markers_node = $Radar/Markers
 @onready var radar = $Radar/RadarBackground
 @onready var hud_update_timer = $HudUpdateTimer
+@onready var full_screen_button = $FullScreenButton
 
 @onready var equipment_icons = {
 	"exposed_reactor": preload("res://assets/sprites/icon_exposed_reactor.png"),
@@ -39,10 +40,18 @@ func _on_hud_update_timer_timeout():
 	update_markers(GameStateManager.mob_node)
 	update_markers(GameStateManager.poi_node)
 
+func _on_full_screen_button_pressed():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
 func _process(_delta):
 	pass
 	
 func _ready():
+	if not DisplayServer.is_touchscreen_available():
+		full_screen_button.hide()
 	emit_signal("hud_ready")
 	
 # Function to add a marker for an entity
@@ -112,4 +121,3 @@ func set_level(player_level,player_xp,player_max_xp):
 	xp_bar.max_value = player_max_xp
 	xp_bar_label.text = "LEVEL: " + str(player_level)
 	set_xp(player_xp)
-
