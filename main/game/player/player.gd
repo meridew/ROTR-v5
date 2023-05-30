@@ -19,7 +19,7 @@ extends CharacterBody2D
 @onready var player_camera = $Camera2D
 @onready var sprite_shadow = $AnimatedSprite2D/Shadow
 
-@onready var joystick_left
+@onready var joystick
 
 var mobs_in_range = {}
 var player_dps = 0
@@ -55,6 +55,14 @@ func get_input():
 		return
 	else:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
+
+		# Add the joystick output to the input direction
+		if joystick.is_pressed:
+			input_direction += joystick.output
+
+		# Make sure the length of the input direction does not exceed 1
+		# input_direction = input_direction.clamped(1)
+		
 		velocity = input_direction * player_speed
 		
 		# Check if the player is moving

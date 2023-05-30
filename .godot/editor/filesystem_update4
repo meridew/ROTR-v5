@@ -22,3 +22,5 @@ res://equipment/gauss_canon.gd
 res://main/game/hud/hud.gd
 res://mobs/mob_class.gd
 res://pool_manager.gd
+res://main/game/game.gd
+res://main/game/player/player.gd
