@@ -55,6 +55,7 @@ func take_damage(damage_amount):
 	animation_player.play("flash")
 	if mob_hp <= 0: 
 		set_physics_process(false)
+		animation_player.stop()
 		animation_player.play("died")
 
 func _on_animation_player_animation_finished(anim_name):

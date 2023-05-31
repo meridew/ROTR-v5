@@ -23,3 +23,4 @@ res://equipment/gauss_canon.gd
 res://main/game/hud/hud.gd
 res://main/armoury_class.gd
 res://main/game/menus/levelup/level_up_menu.gd
+res://equipment/air_strike.gd

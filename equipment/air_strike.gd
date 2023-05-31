@@ -30,6 +30,7 @@ func _init():
 
 func _ready():
 	GameStateManager.hud.trigger_air_strike_button.show()
+	GameStateManager.hud.animation_player.play("air_strike_flash")
 	animated_sprite.hide()
 	sprite.hide()
 	strike_timer.wait_time = stats.frequency.value
