@@ -1,3 +1,4 @@
+Sprite2D
 Label
 AudioStreamPlayer2D
 ColorRect
@@ -5,7 +6,6 @@ AnimationPlayer
 Button
 VBoxContainer
 AnimatedSprite2D
-Sprite2D
 Node2D
 Control
 GPUParticles2D

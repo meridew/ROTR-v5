@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1kim0anmnw3l"]
+[gd_scene load_steps=13 format=3 uid="uid://d1kim0anmnw3l"]
 
 [ext_resource type="Script" path="res://main/game/hud/hud.gd" id="1_qt1at"]
 [ext_resource type="Texture2D" uid="uid://be5cdl1he2tuf" path="res://assets/sprites/player_radar_marker.png" id="2_088rc"]
 [ext_resource type="PackedScene" uid="uid://dkvlvrxo4suxm" path="res://main/game/hud/joystick/virtual_joystick.tscn" id="3_5atj4"]
+[ext_resource type="Texture2D" uid="uid://decf6ummmpvse" path="res://assets/sprites/airstrike_firing.png" id="4_rhecd"]
+[ext_resource type="Texture2D" uid="uid://er3vuu6x88lc" path="res://assets/sprites/a-10_shadow.png" id="5_a6tic"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18ffi"]
 bg_color = Color(0.435294, 0, 0, 0.584314)
@@ -73,8 +75,38 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_uwkpj"]
+resource_name = "air_strike_flash"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TriggerAirstrikeButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TriggerAirstrikeButton:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4cpsv"]
 _data = {
+"air_strike_flash": SubResource("Animation_uwkpj"),
 "hp_flash": SubResource("Animation_j2hn6"),
 "hud_radar_flash": SubResource("Animation_ubl4n"),
 "xp_flash": SubResource("Animation_swpl0")
@@ -131,10 +163,10 @@ libraries = {
 custom_minimum_size = Vector2(480, 270)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1408.0
-offset_top = 756.0
-offset_right = 1888.0
-offset_bottom = 1026.0
+offset_left = 720.0
+offset_top = 776.0
+offset_right = 1200.0
+offset_bottom = 1046.0
 pivot_offset = Vector2(240, 135)
 
 [node name="RadarBackground" type="ColorRect" parent="Radar"]
@@ -142,6 +174,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.239216, 0.239216, 0.239216, 0.368627)
@@ -168,10 +202,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -146.0
-offset_top = 64.0
-offset_right = -35.0
-offset_bottom = -905.0
+offset_left = -1011.0
+offset_top = 44.0
+offset_right = -900.0
+offset_bottom = -925.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/h_separation = 5
@@ -199,27 +233,45 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FullScreenButton" type="Button" parent="."]
-offset_left = 1843.0
-offset_top = 694.0
-offset_right = 1887.0
-offset_bottom = 732.0
+offset_left = 1855.0
+offset_top = 52.0
+offset_right = 1899.0
+offset_bottom = 90.0
 theme_override_font_sizes/font_size = 30
 text = "[ ]"
 
 [node name="TriggerAirstrikeButton" type="Button" parent="."]
-offset_left = 52.0
-offset_top = 545.0
-offset_right = 230.0
-offset_bottom = 711.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 707.0
+offset_top = 287.0
+offset_right = 885.0
+offset_bottom = 453.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(88, 88)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
-text = "TRIGGER
-AIRSTRIKE"
+icon = ExtResource("4_rhecd")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlaneIcon" type="Sprite2D" parent="TriggerAirstrikeButton"]
+modulate = Color(1, 1, 1, 0.615686)
+position = Vector2(88, 82)
+texture = ExtResource("5_a6tic")
 
 [node name="DebugInfo" type="Label" parent="."]
-offset_left = 1433.0
-offset_top = 178.0
-offset_right = 1893.0
-offset_bottom = 665.0
+visible = false
+offset_left = 1435.0
+offset_top = 54.0
+offset_right = 1895.0
+offset_bottom = 541.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
