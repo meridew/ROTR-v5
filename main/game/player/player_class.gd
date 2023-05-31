@@ -3,10 +3,12 @@ class_name BasePlayer
 const player_scene = preload("res://main/game/player/player.tscn")
 const player_obelisk_spriteframes = preload("res://assets/spriteframes/players/player_obelisk.tres")
 const player_slugger_spriteframes = preload("res://assets/spriteframes/players/player_slugger.tres")
+const player_monolith_spriteframes = preload("res://assets/spriteframes/players/player_slugger.tres")
 
 enum PLAYER_ID {
 	slugger,
 	obelisk,
+	monolith,
 }
 
 var player: CharacterBody2D
@@ -36,5 +38,16 @@ func new_player(player_id: BasePlayer.PLAYER_ID):
 			player.scale = Vector2(2,2)
 			player_animated_sprite_shadow.hide()
 			player_animated_sprite.sprite_frames = player_obelisk_spriteframes
+		
+		BasePlayer.PLAYER_ID.monolith:
+			player.entity_variant = BasePlayer.PLAYER_ID.monolith
+			player.default_equipment_id = "spinning_laser"
+			player.player_max_hp = 100
+			player.player_speed = 140
+			player.scale = Vector2(2,2)
+			player_animated_sprite_shadow.hide()
+			player_animated_sprite.sprite_frames = player_monolith_spriteframes
+	
+	player_animated_sprite.play()
 	
 	return player

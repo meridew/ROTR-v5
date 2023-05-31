@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://y1yto3cb88nf"]
+[gd_scene load_steps=22 format=3 uid="uid://y1yto3cb88nf"]
 
 [ext_resource type="Script" path="res://main/game/player/player.gd" id="1_b7v01"]
 [ext_resource type="AudioStream" uid="uid://bagl1ssrrwmjv" path="res://assets/audio/player_damage.mp3" id="2_igtrx"]
 [ext_resource type="Texture2D" uid="uid://c4syx46p6o6tx" path="res://assets/sprites/player_shadow.png" id="3_itesb"]
 [ext_resource type="AudioStream" uid="uid://dgdbcsyk82dr0" path="res://assets/audio/item_collect.mp3" id="3_mglsa"]
-[ext_resource type="SpriteFrames" uid="uid://dd5vj0ib4bot7" path="res://assets/spriteframes/players/monolith.tres" id="4_ig1co"]
+[ext_resource type="Texture2D" uid="uid://hadr0ayxg1g6" path="res://assets/spritesheets/players/monolith.png" id="4_fja7f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hvnj"]
 radius = 9.84886
@@ -90,6 +90,70 @@ _data = {
 "screen_flash": SubResource("Animation_823sp")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_263oq"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hrdy"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrdsn"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul8ce"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7o2g"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqkbr"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xear4"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq1t7"]
+atlas = ExtResource("4_fja7f")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gs1bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_263oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hrdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrdsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul8ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7o2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqkbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xear4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq1t7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 y_sort_enabled = true
 position = Vector2(0, -49)
@@ -132,7 +196,8 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0)
-sprite_frames = ExtResource("4_ig1co")
+sprite_frames = SubResource("SpriteFrames_gs1bu")
+autoplay = "default"
 speed_scale = 1.5
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]

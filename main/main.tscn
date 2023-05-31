@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjelvauv7wpmq"]
+[gd_scene load_steps=7 format=3 uid="uid://bjelvauv7wpmq"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_2p7nc"]
 [ext_resource type="AudioStream" uid="uid://hjxk7pbx80v1" path="res://assets/audio/kim-lightyear-legends-109307.mp3" id="2_3lgpj"]
 [ext_resource type="SpriteFrames" uid="uid://quk5n2pugt3v" path="res://assets/spriteframes/intro/intro.tres" id="3_03ugy"]
 [ext_resource type="SpriteFrames" uid="uid://bywr4fn71d62h" path="res://assets/spriteframes/players/player_slugger.tres" id="4_d067w"]
 [ext_resource type="SpriteFrames" uid="uid://ovjgfnn0ukhx" path="res://assets/spriteframes/players/player_obelisk.tres" id="5_2rabg"]
+[ext_resource type="SpriteFrames" uid="uid://cif34h0ke8qds" path="res://assets/spriteframes/players/player_monolith.tres" id="6_35pe6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_2p7nc")
@@ -173,6 +174,42 @@ animation = &"moving"
 autoplay = "idle"
 frame_progress = 0.119365
 
+[node name="Character3" type="Button" parent="PlayerSelect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Character1")
+theme_override_font_sizes/font_size = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerSelect/VBoxContainer/HBoxContainer/Character3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PlayerSelect/VBoxContainer/HBoxContainer/Character3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "MONOLITH
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerSelect/VBoxContainer/HBoxContainer/Character3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSelect/VBoxContainer/HBoxContainer/Character3/VBoxContainer/TextureRect"]
+position = Vector2(0, -2)
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("6_35pe6")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.735902
+
 [connection signal="animation_finished" from="Intro/TextureRect/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="Intro/TextureRect/AnimatedSprite2D" to="Intro" method="_on_animated_sprite_2d_animation_finished" flags=18]
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
@@ -184,3 +221,5 @@ frame_progress = 0.119365
 [connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character1" to="PlayerSelect" method="_on_character_1_pressed" flags=18]
 [connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character2" to="." method="_on_character_2_pressed"]
 [connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character2" to="PlayerSelect" method="_on_character_2_pressed" flags=18]
+[connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character3" to="." method="_on_character_2_pressed"]
+[connection signal="pressed" from="PlayerSelect/VBoxContainer/HBoxContainer/Character3" to="PlayerSelect" method="_on_character_2_pressed" flags=18]

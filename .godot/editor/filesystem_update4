@@ -4,6 +4,7 @@ res://assets/spriteframes/players/player_slugger.tres
 res://assets/spriteframes/icons/equipment_icons.tres
 res://assets/spriteframes/fx/explosion_v1.tres
 res://assets/spriteframes/intro/intro.tres
+res://assets/spriteframes/players/player_monolith.tres
 res://main/game/game.tscn
 res://main/game/hud/joystick/virtual_joystick.tscn
 res://main/game/player/player.tscn
@@ -15,16 +16,5 @@ res://items/item.tscn
 res://main/game/menus/game_over/game_over.tscn
 res://main/game/hud/console.tscn
 res://main/game/menus/levelup/level_up_menu.tscn
-res://game_state_manager.gd
-res://main/game/hud/hud.gd
-res://items/item_crate.gd
-res://equipment/laser.gd
-res://main/main.gd
-res://main/game/player/player_class.gd
-res://main/game/hud/radar/poi_marker.gd
-res://spawn_manager.gd
-res://assets/spriteframes/players/monolith.tres
-res://equipment/air_strike.gd
-res://main/game/game.gd
 res://equipment/battery_overcharge.tscn
 res://equipment/air_strike.tscn
