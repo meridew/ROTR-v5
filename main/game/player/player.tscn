@@ -14,6 +14,25 @@ radius = 21.4994
 [sub_resource type="CircleShape2D" id="CircleShape2D_vo6ae"]
 radius = 15.0148
 
+[sub_resource type="Animation" id="Animation_5vgkd"]
+resource_name = "item_collected"
+length = 0.2
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.409364,
+"start_offset": 0.432852,
+"stream": ExtResource("3_mglsa")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="Animation" id="Animation_hqiwc"]
 resource_name = "player_took_damage"
 length = 0.1
@@ -62,25 +81,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(2, 2, 2, 0), Color(100, 100, 100, 1), Color(2, 2, 2, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_5vgkd"]
-resource_name = "item_collected"
-length = 0.2
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Audio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.409364,
-"start_offset": 0.432852,
-"stream": ExtResource("3_mglsa")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7jlj"]
 _data = {

@@ -12,10 +12,9 @@ rough = true
 bounce = 1.0
 absorbent = true
 
-[sub_resource type="Animation" id="Animation_6biy2"]
-resource_name = "flash"
-length = 0.1
-step = 0.01
+[sub_resource type="Animation" id="Animation_yni2v"]
+resource_name = "alive"
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -23,10 +22,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(3, 3, 3, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ytjf0"]
@@ -72,9 +71,10 @@ tracks/2/keys = {
 "values": [Color(0.662745, 0, 0, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_yni2v"]
-resource_name = "alive"
-length = 0.01
+[sub_resource type="Animation" id="Animation_6biy2"]
+resource_name = "flash"
+length = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,10 +82,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(3, 3, 3, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pradc"]
