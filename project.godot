@@ -133,10 +133,9 @@ pointing/emulate_touch_from_mouse=true
 
 [physics]
 
-2d/run_on_separate_thread=true
 2d/default_gravity=0.0
 2d/default_gravity_vector=Vector2(0, 0)
-2d/solver/solver_iterations=8
+2d/solver/solver_iterations=4
 
 [rendering]
 
