@@ -55,12 +55,13 @@ func initialize_pools():
 
 var base_fps = 7
 var base_speed = 120
-var base_acceleration = 100000
+var base_mob_acceleration = 100_000
+var base_boss_mob_acceleration = 100_000_0
 
 func init_mob_pool_inactive():
 	var mob
 	for i in range(mobs_max):
-		mob = BaseMob.new("mob",10,100,base_speed,50,base_fps,base_acceleration,100,2,0.2).mob
+		mob = BaseMob.new("mob",10,100,base_speed,50,base_fps,base_mob_acceleration,100,2,0.2).mob
 		disable(mob)
 		mob.set_target(GameStateManager.player)
 		#mob.global_position = get_random_position()
@@ -70,7 +71,7 @@ func init_mob_pool_inactive():
 func init_boss_mob_pool_inactive():
 	var boss_mob
 	for i in range(boss_mobs_max):
-		boss_mob = BaseMob.new("boss_mob",50,1000,base_speed,5000,base_fps,1000000,1000,3,0.2).mob
+		boss_mob = BaseMob.new("boss_mob",50,1000,base_speed,1000,base_fps,base_boss_mob_acceleration,1000,3,0.2).mob
 		disable(boss_mob)
 		boss_mob.set_target(GameStateManager.player)
 		#boss_mob.global_position = get_random_position()

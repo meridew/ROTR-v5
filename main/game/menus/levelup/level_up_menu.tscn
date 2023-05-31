@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://tdn55dr0so74"]
+[gd_scene load_steps=5 format=3 uid="uid://tdn55dr0so74"]
 
 [ext_resource type="Script" path="res://main/game/menus/levelup/level_up_menu.gd" id="1_el0x5"]
+[ext_resource type="AudioStream" uid="uid://crhguv06vh02o" path="res://assets/audio/level_up.mp3" id="2_wybts"]
+
+[sub_resource type="Animation" id="Animation_to073"]
+resource_name = "menu_flash"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wm3ab"]
+_data = {
+"menu_flash": SubResource("Animation_to073")
+}
 
 [node name="Levelup_Menu" type="CanvasLayer" groups=["levelup_menu"]]
 process_mode = 2
 layer = 2
 script = ExtResource("1_el0x5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -38,5 +69,14 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "SKIP"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wm3ab")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wybts")
+volume_db = 5.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

@@ -14,7 +14,7 @@ func _init():
 	add_stat("damage", 50, 0.5)
 	add_stat("frequency", 1, 0.2)
 	add_stat("projectile_size", 0.5, 0.3)
-	add_stat("projectile_speed", 250, 1)
+	add_stat("projectile_speed", 250, 0.25)
 	add_stat("projectile_passthrough", 0, 1, 1)
 	add_stat("projectile_knockback", 10000, 0.2)
 
@@ -23,10 +23,6 @@ func _process(delta):
 	if elapsed_time >= 1 / stats.frequency.value:
 		elapsed_time = 0
 		fire_projectile()
-
-func update_stats():
-	dps = stats.damage.value * stats.frequency.value * (1 + stats.projectile_passthrough.value)
-	effectiveness = dps * (1 + stats.projectile_size.value) * stats.projectile_speed.value / 500 * (1 + stats.projectile_knockback.value / 100)
 
 func fire_projectile():
 	if mobs_in_range.size() > 0:

@@ -206,14 +206,25 @@ offset_bottom = 732.0
 theme_override_font_sizes/font_size = 30
 text = "[ ]"
 
-[node name="Fire" type="Button" parent="."]
-offset_left = 1805.0
-offset_top = 280.0
-offset_right = 1889.0
-offset_bottom = 454.0
+[node name="TriggerAirstrikeButton" type="Button" parent="."]
+offset_left = 52.0
+offset_top = 545.0
+offset_right = 230.0
+offset_bottom = 711.0
 theme_override_font_sizes/font_size = 30
-text = "FIRE"
+text = "TRIGGER
+AIRSTRIKE"
+
+[node name="DebugInfo" type="Label" parent="."]
+offset_left = 1433.0
+offset_top = 178.0
+offset_right = 1893.0
+offset_bottom = 665.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "DEBUG_INFO"
 
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]
 [connection signal="pressed" from="FullScreenButton" to="." method="_on_full_screen_button_pressed"]
-[connection signal="pressed" from="Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="TriggerAirstrikeButton" to="." method="_on_trigger_airstrike_button_pressed"]

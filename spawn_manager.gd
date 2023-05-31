@@ -14,7 +14,7 @@ var boss_mob_spawn_timer = Timer.new()
 var respawn_timer = Timer.new()
 var spawn_params_time_period = 0
 
-var difficulty = 1
+var difficulty = 1.2
 
 func _ready():
 	_init_spawn_manager()
@@ -46,8 +46,10 @@ func set_spawn_params():
 	if all_spawn_params[time_period_string]:
 		current_spawn_params = all_spawn_params[time_period_string]
 		for key in current_spawn_params.keys():
-			current_spawn_params[key] = int(current_spawn_params[key]) * difficulty
+			current_spawn_params[key] = int(current_spawn_params[key])
 		print("Current spawn parameters:")
+		current_spawn_params["mobs_hp"] = current_spawn_params["mobs_hp"] * difficulty
+		current_spawn_params["mobs_per_second"] = current_spawn_params["mobs_per_second"] * difficulty
 		print(current_spawn_params)
 
 func _on_respawn_timer_timeout():

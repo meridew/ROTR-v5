@@ -25,10 +25,11 @@ func _init():
 	equipment_name = "Air Strike"
 	equipment_description = "air strike danger close"
 	add_stat("damage", 200, 0.05)
-	add_stat("radius", 200, 0.05)
+	add_stat("radius", 100, 0.05)
 	add_stat("frequency", 5, 0.05)
 
 func _ready():
+	GameStateManager.hud.trigger_air_strike_button.show()
 	animated_sprite.hide()
 	sprite.hide()
 	strike_timer.wait_time = stats.frequency.value
@@ -40,7 +41,7 @@ func _ready():
 	var scale_factor_anim_sprite = desired_sprite_size / max(anim_sprite_size.x, anim_sprite_size.y)
 	sprite.scale = Vector2(scale_factor_sprite, scale_factor_sprite)
 	animated_sprite.scale = Vector2(scale_factor_anim_sprite, scale_factor_anim_sprite)
-
+	allowed_in_armoury = false
 
 func _process(_delta):
 	if is_strike_active:
@@ -53,9 +54,9 @@ func _on_danger_close_timer_timeout():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("fire"):
-		trigger()
+		trigger_airstrike()
 
-func trigger():
+func trigger_airstrike():
 	sprite.texture = targeting_sprite
 	sprite.show()
 	animation_player.play("air_strike_targeting")
@@ -72,6 +73,7 @@ func _on_strike_timer_timeout():
 	# air_strike_mobs.clear()  
 	collision.disabled = true
 	sprite.hide()
+	GameStateManager.hud.trigger_air_strike_button.hide()
 
 func _on_area_2d_body_entered(body):
 	if body not in air_strike_mobs: 

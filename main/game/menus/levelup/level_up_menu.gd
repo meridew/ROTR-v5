@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var button_scene = preload("res://main/game/menus/levelup/buttons/level_up_button.tscn")
 @onready var button_container = $MarginContainer/VBoxContainer/ButtonsContainer
+@onready var audio_player = $AudioStreamPlayer2D
+@onready var animation_player = $AnimationPlayer
 
 @export var buttons = []
 @export var buttons_amount = 5
@@ -11,15 +13,17 @@ func _ready():
 
 func show_menu():
 	GameStateManager.pause()
+	level_up_animation()
 	GameStateManager.game.set_music_volume("menu")
+	remove_buttons()  # Add this line here to remove existing buttons
 	create_buttons(buttons_amount)
 	show()
 	
-func _on_button_pressed(button: Button):
-	process_button_press(button)
-	remove_buttons()
-	hide()
-	GameStateManager.game.set_music_volume("game")
+func _on_button_pressed(button: Button): 
+	process_button_press(button) 
+	remove_buttons() 
+	hide() 
+	GameStateManager.player.process_level_up_queue()
 	GameStateManager.resume()
 
 func create_buttons(quantity: int) -> void:
@@ -78,8 +82,12 @@ func get_random_options(quantity: int):
 		options.erase(random_key)  # Remove the selected option from the 'options' dictionary
 	return random_options
 
-func _on_skip_button_pressed():
-	remove_buttons()
-	hide()
+func _on_skip_button_pressed(): 
+	remove_buttons() 
+	hide() 
+	GameStateManager.player.process_level_up_queue()
 	GameStateManager.resume()
-	GameStateManager.game.set_music_volume("game")
+
+func level_up_animation():
+	audio_player.play()
+	animation_player.play("menu_flash")

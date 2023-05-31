@@ -53,11 +53,14 @@ func knockback(amount):
 func take_damage(damage_amount):
 	mob_hp -= damage_amount
 	animation_player.play("flash")
-	
-func _on_animation_player_animation_finished(anim_name):
 	if mob_hp <= 0: 
-		die()
+		set_physics_process(false)
+		animation_player.play("died")
 
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "died":
+		die()
+		
 func die():
 	GameStateManager.pools.acquire_item(self, mob_value)
 	GameStateManager.pools.release_mob(self)
@@ -94,3 +97,4 @@ func change_mob(animation_name):
 		"caveman": offset = caveman_offset
 	sprite_shadow.offset = offset
 	animated_sprite.play()
+	animation_player.play("alive")

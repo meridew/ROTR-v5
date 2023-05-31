@@ -23,9 +23,6 @@ func _ready():
 	collision.shape.radius = stats.damage_radius.value
 	stats.damage_radius.connect("stat_changed", Callable(self, "_on_stat_changed"))
 
-func calculate_dps():
-	dps = stats.damage.value * stats.frequency.value
-
 func _on_stat_changed():
 	collision.shape.radius = stats.damage_radius.value
 	queue_redraw()

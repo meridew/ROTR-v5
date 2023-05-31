@@ -1,4 +1,3 @@
-res://main/game/hud/hud.gd
 res://main/main.tscn
 res://assets/spriteframes/players/player_obelisk.tres
 res://assets/spriteframes/players/player_slugger.tres
@@ -16,3 +15,11 @@ res://items/item.tscn
 res://main/game/menus/game_over/game_over.tscn
 res://main/game/hud/console.tscn
 res://main/game/menus/levelup/level_up_menu.tscn
+res://main/game/player/player.gd
+res://mobs/mob.gd
+res://main/main.gd
+res://spawn_manager.gd
+res://equipment/gauss_canon.gd
+res://main/game/hud/hud.gd
+res://main/armoury_class.gd
+res://main/game/menus/levelup/level_up_menu.gd

@@ -12,6 +12,8 @@ signal hud_ready
 @onready var radar = $Radar/RadarBackground
 @onready var hud_update_timer = $HudUpdateTimer
 @onready var full_screen_button = $FullScreenButton
+@onready var trigger_air_strike_button = $TriggerAirstrikeButton
+@onready var debug_info = $DebugInfo
 
 @onready var equipment_icons = {
 	"exposed_reactor": preload("res://assets/sprites/icon_exposed_reactor.png"),
@@ -24,6 +26,10 @@ const RADAR_SCALE = 0.1
 var entity_markers: Dictionary = {}
 var entity_marker_scale = 1
 var boss_mob_marker_scale = 2
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("toggle_debug_info"):
+		debug_info.visible = !debug_info.visible
 
 func add_equipment(equipment_id: String):
 	var texture_rect = TextureRect.new()
@@ -99,9 +105,6 @@ func update_markers(entity_node):
 		if entity.visible and entity in entity_markers:
 			update_marker_position(entity, player_position)
 
-func flash_poi_makers():
-	pass
-
 func flash_radar():
 	animation_player.play("hud_radar_flash")
 
@@ -122,5 +125,5 @@ func set_level(player_level,player_xp,player_max_xp):
 	xp_bar_label.text = "LEVEL: " + str(player_level)
 	set_xp(player_xp)
 
-func _on_fire_pressed():
-	pass # Replace with function body.
+func _on_trigger_airstrike_button_pressed():
+	GameStateManager.armoury.equipment["air_strike"].trigger_airstrike()

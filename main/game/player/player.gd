@@ -22,9 +22,7 @@ extends CharacterBody2D
 @onready var joystick
 
 var mobs_in_range = {}
-var player_dps = 0
-var player_effectiveness = 0
-var level_up_counter: int = 0
+var level_up_queue = []
 
 func _ready():
 	player_hp = player_max_hp
@@ -35,7 +33,7 @@ func get_equipment(equipment_id: String, add_to_hud = false):
 	add_child(equipment_instance)
 	if add_to_hud:
 		GameStateManager.hud.add_equipment(equipment_id)
-	calculate_player_dps()
+	update_debug_info()
 
 func replace_equipment(equipment_id: String, remove_from_hud = true):
 	var equipment_instance = equipment[equipment_id]
@@ -43,7 +41,7 @@ func replace_equipment(equipment_id: String, remove_from_hud = true):
 	GameStateManager.armoury.replace_equipment(equipment_id)
 	if remove_from_hud:
 		GameStateManager.hud.replace_equipment(equipment_id)
-	calculate_player_dps()
+	update_debug_info()
 
 func _physics_process(_delta: float):
 	get_input()
@@ -77,27 +75,25 @@ func get_input():
 			if animated_sprite.animation != "idle":
 				animated_sprite.animation = "idle"
 
-func calculate_player_dps():
-	var dps = 0
-	var effectiveness = 0
-	for equipment_id in equipment:
-		var item = equipment[equipment_id]
-		if item.dps:
-			dps += item.dps
-			effectiveness += item.effectiveness
-	player_effectiveness = effectiveness
-	player_dps = dps
+func level_up():  
+	while player_xp >= player_max_xp:  
+		player_xp -= player_max_xp  
+		player_max_xp *= player_xp_level_multiplier  
+		player_level += 1   
+		level_up_queue.append(player_level)
 
-func level_up():
-	while player_xp >= player_max_xp:
-		player_max_xp *= player_xp_level_multiplier
-		player_xp -= player_max_xp
-		player_level += 1
-	GameStateManager.hud.set_level(player_level, player_xp, player_max_xp)
-	GameStateManager.level_up_menu.show_menu()
-	calculate_player_dps()
+	if level_up_queue.size() > 0:  
+		process_level_up_queue()
+
+func process_level_up_queue():
+	if level_up_queue.size() > 0: 
+		var next_level = level_up_queue.pop_front() 
+		GameStateManager.hud.set_level(next_level, player_xp, player_max_xp) 
+		GameStateManager.level_up_menu.show_menu()
+		update_debug_info()
 
 func add_xp(area):
+	animation_player.play("item_collected")
 	player_xp += area.value
 	GameStateManager.hud.set_xp(player_xp)
 	if player_xp >= player_max_xp:
@@ -157,3 +153,12 @@ func set_weapon(weapon_id):
 
 func set_shadow(shadow_enabled):
 	sprite_shadow.visible = shadow_enabled
+
+func update_debug_info():
+	var debug_text = ""
+	for e in equipment.keys():
+		debug_text += "Weapon: " + str(e) + "\n"
+		for s in equipment[e].stats.keys():
+			var v = equipment[e].stats[s].value
+			debug_text += "   - " + str(s) + ": " + str(v) + "\n"
+	GameStateManager.hud.debug_info.text = debug_text

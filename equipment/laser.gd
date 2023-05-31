@@ -17,10 +17,6 @@ func _init():
 	add_stat("passthrough", 0, 1, 1)
 	add_stat("range", 100, 0.2)
 
-func update_stats():
-	dps = stats.damage.value * stats.frequency.value * (stats.passthrough.value + 1)
-	effectiveness = dps * (1 + stats.range.value / 100)
-
 func _ready():
 	is_charging = true
 	

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://y1yto3cb88nf"]
+[gd_scene load_steps=12 format=3 uid="uid://y1yto3cb88nf"]
 
 [ext_resource type="Script" path="res://main/game/player/player.gd" id="1_b7v01"]
+[ext_resource type="AudioStream" uid="uid://bagl1ssrrwmjv" path="res://assets/audio/player_damage.mp3" id="2_igtrx"]
 [ext_resource type="Texture2D" uid="uid://c4syx46p6o6tx" path="res://assets/sprites/player_shadow.png" id="3_itesb"]
+[ext_resource type="AudioStream" uid="uid://dgdbcsyk82dr0" path="res://assets/audio/item_collect.mp3" id="3_mglsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hvnj"]
 radius = 9.84886
@@ -28,6 +30,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.135895,
+"start_offset": 0.0246089,
+"stream": ExtResource("2_igtrx")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_823sp"]
 resource_name = "screen_flash"
@@ -46,8 +63,28 @@ tracks/0/keys = {
 "values": [Color(2, 2, 2, 0), Color(100, 100, 100, 1), Color(2, 2, 2, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_5vgkd"]
+resource_name = "item_collected"
+length = 0.2
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.409364,
+"start_offset": 0.432852,
+"stream": ExtResource("3_mglsa")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7jlj"]
 _data = {
+"item_collected": SubResource("Animation_5vgkd"),
 "player_took_damage": SubResource("Animation_hqiwc"),
 "screen_flash": SubResource("Animation_823sp")
 }
@@ -90,7 +127,8 @@ libraries = {
 "": SubResource("AnimationLibrary_k7jlj")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0)

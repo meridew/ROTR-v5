@@ -22,7 +22,7 @@ func _ready():
 	game = game_scene.instantiate()
 
 func _unhandled_input(event):
-	if intro.visible and event.is_action_pressed("ui_cancel"):
+	if intro.visible and (event.is_action_pressed("ui_cancel") or event is InputEventScreenTouch and event.pressed):
 		intro_animation.stop()
 		intro.hide()
 		main_menu.show()
