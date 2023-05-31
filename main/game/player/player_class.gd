@@ -14,8 +14,6 @@ var player: CharacterBody2D
 func new_player(player_id: BasePlayer.PLAYER_ID):
 	player = player_scene.instantiate()
 	player.entity_type = "player"
-	player.entity_variant
-	player.default_equipment_id
 	
 	var player_animated_sprite = player.get_node("AnimatedSprite2D")
 	var player_animated_sprite_shadow = player.get_node("AnimatedSprite2D").get_node("Shadow")

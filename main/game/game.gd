@@ -85,9 +85,9 @@ func _on_game_timer_timeout():
 	var seconds = game_time_seconds_passed % 60
 	game_time = str(minutes).pad_zeros(2) + ":" + str(seconds).pad_zeros(2)	
 
-func new_player(player_id: BasePlayer.PLAYER_ID):
+func new_player(_player_id: BasePlayer.PLAYER_ID):
 	var base_player = BasePlayer.new()
-	return base_player.new_player(player_id)
+	return base_player.new_player(_player_id)
 
 func new_armoury():
 	return Armoury.new()

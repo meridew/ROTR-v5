@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dd5vj0ib4bot7"]
 
 [ext_resource type="Texture2D" uid="uid://hadr0ayxg1g6" path="res://assets/spritesheets/players/monolith.png" id="1_faqwo"]
 

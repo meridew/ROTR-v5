@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://y1yto3cb88nf"]
+[gd_scene load_steps=13 format=3 uid="uid://y1yto3cb88nf"]
 
 [ext_resource type="Script" path="res://main/game/player/player.gd" id="1_b7v01"]
 [ext_resource type="AudioStream" uid="uid://bagl1ssrrwmjv" path="res://assets/audio/player_damage.mp3" id="2_igtrx"]
 [ext_resource type="Texture2D" uid="uid://c4syx46p6o6tx" path="res://assets/sprites/player_shadow.png" id="3_itesb"]
 [ext_resource type="AudioStream" uid="uid://dgdbcsyk82dr0" path="res://assets/audio/item_collect.mp3" id="3_mglsa"]
+[ext_resource type="SpriteFrames" uid="uid://dd5vj0ib4bot7" path="res://assets/spriteframes/players/monolith.tres" id="4_ig1co"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hvnj"]
 radius = 9.84886
@@ -128,12 +129,10 @@ libraries = {
 }
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0)
-animation = &""
-autoplay = "idle"
+sprite_frames = ExtResource("4_ig1co")
 speed_scale = 1.5
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]

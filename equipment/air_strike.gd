@@ -8,7 +8,6 @@ extends "res://equipment/base_equipment.gd"
 @onready var sprite = $Area2D/CollisionShape2D/Crosshairs
 @onready var plane_shadow_sprite = $PlaneShadow
 @onready var animated_sprite = $Area2D/CollisionShape2D/AnimatedSprite2D
-
 @onready var animation_player_2 = $Area2D/AnimationPlayer2
 
 @onready var targeting_sprite = preload("res://assets/sprites/airstrike_targeting.png")
@@ -18,6 +17,12 @@ var target_position = Vector2()
 var air_strike_delay = 5
 var air_strike_mobs = []
 var is_strike_active = false
+var sprite_size
+var anim_sprite_size
+var desired_sprite_size
+var scale_factor_sprite
+var scale_factor_anim_sprite
+
 
 func _init():
 	type = "weapon"
@@ -35,14 +40,17 @@ func _ready():
 	sprite.hide()
 	strike_timer.wait_time = stats.frequency.value
 	collision.shape.radius = stats.radius.value
-	var sprite_size = sprite.texture.get_size()
-	var anim_sprite_size = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, 0).get_size()
-	var desired_sprite_size = stats.radius.value * 2
-	var scale_factor_sprite = desired_sprite_size / max(sprite_size.x, sprite_size.y)
-	var scale_factor_anim_sprite = desired_sprite_size / max(anim_sprite_size.x, anim_sprite_size.y)
+	scale_sprite()
+	allowed_in_armoury = false
+
+func scale_sprite():
+	sprite_size = sprite.texture.get_size()
+	anim_sprite_size = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, 0).get_size()
+	desired_sprite_size = stats.radius.value * 2
+	scale_factor_sprite = desired_sprite_size / max(sprite_size.x, sprite_size.y)
+	scale_factor_anim_sprite = desired_sprite_size / max(anim_sprite_size.x, anim_sprite_size.y)
 	sprite.scale = Vector2(scale_factor_sprite, scale_factor_sprite)
 	animated_sprite.scale = Vector2(scale_factor_anim_sprite, scale_factor_anim_sprite)
-	allowed_in_armoury = false
 
 func _process(_delta):
 	if is_strike_active:
@@ -84,7 +92,7 @@ func _on_area_2d_body_exited(body):
 	if body in air_strike_mobs:
 		air_strike_mobs.erase(body)
 
-func _on_animation_player_2_animation_finished(anim_name):
+func _on_animation_player_2_animation_finished(_anim_name):
 	animated_sprite.show()
 	animated_sprite.play("default")
 	

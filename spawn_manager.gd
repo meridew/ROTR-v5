@@ -56,9 +56,7 @@ func _on_respawn_timer_timeout():
 	respawn_mobs()
 
 func _init_respawn_timer():
-	respawn_timer.autostart = true
 	respawn_timer.wait_time = 1
-	respawn_timer.start()
 	respawn_timer.connect("timeout",Callable(self,"_on_respawn_timer_timeout"))
 
 func _init_spawn_params_timer():
@@ -79,6 +77,7 @@ func start_spawning():
 	add_child(respawn_timer)
 	spawn_params_update_timer.start()
 	mob_spawn_timer.start()
+	respawn_timer.start()
 
 func stop_spawning():
 	spawn_params_update_timer.stop()

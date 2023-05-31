@@ -44,7 +44,7 @@ func _on_character_2_pressed():
 	start_game()
 	
 func start_game():
-	var game = game_scene.instantiate()
+	game = game_scene.instantiate()
 	game.player_id = player_id
 	add_child(game)
 	player_select.hide()

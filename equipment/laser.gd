@@ -12,10 +12,10 @@ func _init():
 	equipment_id = "laser"
 	equipment_name = "Laser"
 	equipment_description = "bouncing laser"
-	add_stat("damage", 50, 0.5)
-	add_stat("frequency", 1, 0.2)
+	add_stat("damage", 10, 0.2)
+	add_stat("frequency", 1, 0.1)
 	add_stat("passthrough", 0, 1, 1)
-	add_stat("range", 100, 0.2)
+	add_stat("range", 100, 0.10)
 
 func _ready():
 	is_charging = true
@@ -36,11 +36,11 @@ func _process(delta):
 			fire_time = 0.1  # Reset fire time
 			is_charging = true  # Start charging again
 	
-func fire_laser(origin, range, passthrough, found_mobs = {}):
+func fire_laser(origin, _range, passthrough, found_mobs = {}):
 	laser.clear_points()
 	var current_origin = laser.to_local(origin)
 	var remaining_passthrough = passthrough + 1
-	var closest_mob = find_closest_mob(current_origin, range, found_mobs)
+	var closest_mob = find_closest_mob(current_origin, _range, found_mobs)
 	if closest_mob == null:
 		return
 	while remaining_passthrough > 0:
@@ -48,14 +48,14 @@ func fire_laser(origin, range, passthrough, found_mobs = {}):
 		remaining_passthrough -= 1
 		if remaining_passthrough <= 0:
 			break
-		closest_mob = find_closest_mob(current_origin, range, found_mobs)
+		closest_mob = find_closest_mob(current_origin, _range, found_mobs)
 		if closest_mob == null:
 			break
 	laser.add_point(current_origin)
 
-func find_closest_mob(current_origin, range, found_mobs):
+func find_closest_mob(current_origin, _range, found_mobs):
 	var closest_mob = null
-	var min_distance = range
+	var min_distance = _range
 	for mob in GameStateManager.mob_node.get_children():
 		if mob in found_mobs or not mob.visible:
 			continue

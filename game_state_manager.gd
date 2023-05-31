@@ -39,6 +39,6 @@ func console_toggle(value: bool) -> void:
 
 func restart():
 	SpawnManager.stop_spawning()
-	var pools: Pools
+	pools = null
 	resume()
 	get_tree().reload_current_scene()

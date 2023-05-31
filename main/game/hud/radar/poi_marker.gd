@@ -6,8 +6,3 @@ var size
 func _ready():
 	size = texture.get_size()
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
