@@ -121,3 +121,6 @@ func set_level(player_level,player_xp,player_max_xp):
 	xp_bar.max_value = player_max_xp
 	xp_bar_label.text = "LEVEL: " + str(player_level)
 	set_xp(player_xp)
+
+func _on_fire_pressed():
+	pass # Replace with function body.

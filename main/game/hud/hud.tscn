@@ -206,5 +206,14 @@ offset_bottom = 732.0
 theme_override_font_sizes/font_size = 30
 text = "[ ]"
 
+[node name="Fire" type="Button" parent="."]
+offset_left = 1805.0
+offset_top = 280.0
+offset_right = 1889.0
+offset_bottom = 454.0
+theme_override_font_sizes/font_size = 30
+text = "FIRE"
+
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]
 [connection signal="pressed" from="FullScreenButton" to="." method="_on_full_screen_button_pressed"]
+[connection signal="pressed" from="Fire" to="." method="_on_fire_pressed"]
